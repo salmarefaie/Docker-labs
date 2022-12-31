@@ -28,17 +28,17 @@ Run the following command in the container “echo docker ”
 >         Echo docker
 
 Open a bash shell in the container and touch a file named hello-docker
->         sudo docker container run -it ubuntu
+          sudo docker container run -it ubuntu
           touch hello-docker
 
 Stop the container and remove it. Write your comment about the file hello-docker
->         sudo docker ps -a
+          sudo docker ps -a
           Ctrl d
           sudo docker rm 638ff1a246a2
           comment about the file hello-docker: Remove file
 
 
 Remove all stopped containers
->         sudo docker rm $(sudo docker ps -a -q)
+          sudo docker rm $(sudo docker ps -a -q)
           OR
           sudo docker container prune
