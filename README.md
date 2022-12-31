@@ -6,7 +6,7 @@
 ### Problem 1
 
 - Run the container hello-world
-> sudo docker run hello-world
+>          sudo docker run hello-world
 
 > Check the container status
 >> sudo docker ps -a
