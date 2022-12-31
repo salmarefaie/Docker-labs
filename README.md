@@ -66,6 +66,9 @@ Commit the container with image name my apache
 
 Create a dockerfile for ngnix and build the image from this dockerfile
 >         sudo docker build -t image_nginx .
->          In dockerfile:
+>         In dockerfile:
 >               FROM nginx:latest
 
+### Problem 5
+Create a volume called mysql_data, then deploy a MySQL database called app-database. Use the mysql latest image, and use the -e flag to set MYSQL_ROOT_PASSWORD to P4sSw0rd0!.Mount the mysql_data volume to /var/lib/mysql.The container should run in the background.
+>         sudo docker run -d -e MYSQL_ROOT_PASSWORD="P4sSw0rd0!" -v mysql_data:/var/lib/mysql --name app-database mysql
