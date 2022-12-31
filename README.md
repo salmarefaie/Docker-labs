@@ -28,8 +28,8 @@ Run the following command in the container “echo docker ”
 >         Echo docker
 
 Open a bash shell in the container and touch a file named hello-docker
-          sudo docker container run -it ubuntu
-          touch hello-docker
+>          sudo docker container run -it ubuntu
+>         touch hello-docker
 
 Stop the container and remove it. Write your comment about the file hello-docker
           sudo docker ps -a
