@@ -42,3 +42,14 @@ Remove all stopped containers
 >          sudo docker rm $(sudo docker ps -a -q)
 >          OR
 >          sudo docker container prune
+
+### Problem 3
+Run a container httpd with name apache and attach a volume to the container: Volume for containing static html file
+>         sudo docker run -it -v volume:/var/www/html --name apache2 httpd bash
+
+Remove the container
+>         sudo docker rm 967d975890ce 
+
+Run a new container with the following: Attach the volume that was attached to the
+previous container & Map port 80 to port 9898 on you host machine & Access the html files from your browser
+>         sudo docker run -it -v volume:/var/www/html -p 9898:80 --name apache3 httpd bash
