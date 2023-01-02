@@ -209,3 +209,36 @@ Convert the created react app multi-stage docker image into compose format.
 >                sudo docker-compose ps   
 
 
+### Problem 2
+Create flask app to count number of visits to browser:
+  - Create new directory called flask then add app.py and requirements.txt files
+  - Create Dockerfile for the python app
+  - Create docker-compose for the app and use Redis as temp DB.
+  
+> requeirments.txt and app.py in lab3.. problem 2 and they with me with problem
+  
+>           IN Dockerfile:
+>                FROM python:3.11.0a6-alpine3.15
+>                WORKDIR /code
+>                COPY requirements.txt /code
+>                RUN pip install -r requirements.txt --no-cache-dir
+>                COPY . /code
+>                CMD python app.py
+
+>           IN docker-compose.yaml:
+>                version: '3'
+>                services:
+>                   web:
+>                     build: .
+>                     ports:
+>                        - "8000:5000"
+>                   redis:
+>                     image: "redis:alpine"
+
+>           IN Terminal:
+>                sudo docker-compose up 
+
+>           IN Browser:
+>                http://172.21.0.3:8000
+
+
