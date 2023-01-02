@@ -155,8 +155,7 @@ What is the rest of Docker Networks ? “Name and Definition”
 >           3.The None Driver:
 >              The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other containers. You can use it when you want to disable the networking on a container.
 >           4.The Overlay Driver:
->              The Overlay driver is for multi-host network communication, as with Docker Swarm or Kubernetes. It allows containers across the host to 
-communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s built on top of an existing computer network.
+>              The Overlay driver is for multi-host network communication, as with Docker Swarm or Kubernetes. It allows containers across the host to communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s built on top of an existing computer network.
 
 ### Problem 4
 Create your bridge network, two containers from ubuntu image with different names and try to ping each other using NAME.
@@ -215,7 +214,7 @@ Create flask app to count number of visits to browser:
   - Create Dockerfile for the python app
   - Create docker-compose for the app and use Redis as temp DB.
   
-> requeirments.txt and app.py in lab3.. problem 2 and they with me with problem
+>           requeirments.txt and app.py in lab3.. problem 2 and they with me with problem
   
 >           IN Dockerfile:
 >                FROM python:3.11.0a6-alpine3.15
