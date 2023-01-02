@@ -144,3 +144,34 @@ Create react app docker container "using single stage, Multi-Stage Dockerfile"
 >           IN Terminal Multi Stage:
 >                sudo docker build -t my-app2:1.0 .
 >                sudo docker run -it --name multi -p 8001:80  my-app2:1.0   
+
+### Problem 3
+What is the rest of Docker Networks ? “Name and Definition”
+
+>           1.The Bridge Driver:
+>              This is the default. Whenever you start Docker, a bridge network gets created and all newly started containers will connect automatically  >              to the default bridge network.
+>           2.The Host Driver:
+>              As the name suggests, host drivers use the networking provided by the host machine. And it removes network isolation between the container >              and the host machine where Docker is running. You can use the host network if you don’t want to rely on Docker’s networking but instead 
+>              rely on the host machine networking.
+>           3.The None Driver:
+>              The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other >              containers. You can use it when you want to disable the networking on a container.
+>           4.The Overlay Driver:
+>              The Overlay driver is for multi-host network communication, as with Docker Swarm or Kubernetes. It allows containers across the host to 
+>              communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s 
+>              built on top of an existing computer network.
+
+### Problem 4
+Create your bridge network, two containers from ubuntu image with different names and try to ping each other using NAME.
+
+>          1. sudo docker run -it -d --name contUbuntu1 ubuntu
+>          2. sudo docker run -it -d --name contUbuntu2 ubuntu
+>          3. sudo docker exec -it contUbuntu1 bash
+>          4. apt-get update
+>          5. apt-get install inetutils-ping 
+>          6. sudo docker network create net
+>          7. sudo docker network connect net contUbuntu1
+>          8. sudo docker network connect net contUbuntu2
+>          9. sudo docker network inspect net
+>          10. sudo docker exec -it contUbuntu1 bash
+>          11. ping contUbuntu2
+
