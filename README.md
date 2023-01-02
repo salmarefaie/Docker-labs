@@ -111,7 +111,7 @@ Create react app docker container "using single stage, Multi-Stage Dockerfile"
 >           IN Terminal:
 >                curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
 >                sudo apt-get install -y nodejs
->                npx create-react-app my-app
+>                npx create-react-app my-app     ... install react app (folder: my-app)
 >                cd my-app
 >                touch Dockerfile
 
