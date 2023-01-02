@@ -149,16 +149,14 @@ Create react app docker container "using single stage, Multi-Stage Dockerfile"
 What is the rest of Docker Networks ? “Name and Definition”
 
 >           1.The Bridge Driver:
->              This is the default. Whenever you start Docker, a bridge network gets created and all newly started containers will connect automatically  >              to the default bridge network.
+>              This is the default. Whenever you start Docker, a bridge network gets created and all newly started containers will connect automatically to the default bridge network.
 >           2.The Host Driver:
->              As the name suggests, host drivers use the networking provided by the host machine. And it removes network isolation between the container >              and the host machine where Docker is running. You can use the host network if you don’t want to rely on Docker’s networking but instead 
->              rely on the host machine networking.
+>              As the name suggests, host drivers use the networking provided by the host machine. And it removes network isolation between the container and the host machine where Docker is running. You can use the host network if you don’t want to rely on Docker’s networking but instead rely on the host machine networking.
 >           3.The None Driver:
->              The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other >              containers. You can use it when you want to disable the networking on a container.
+>              The none network driver does not attach containers to any network. Containers do not access the external network or communicate with other containers. You can use it when you want to disable the networking on a container.
 >           4.The Overlay Driver:
 >              The Overlay driver is for multi-host network communication, as with Docker Swarm or Kubernetes. It allows containers across the host to 
->              communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s 
->              built on top of an existing computer network.
+communicate with each other without worrying about the setup. Think of an overlay network as a distributed virtualized network that’s built on top of an existing computer network.
 
 ### Problem 4
 Create your bridge network, two containers from ubuntu image with different names and try to ping each other using NAME.
@@ -174,4 +172,40 @@ Create your bridge network, two containers from ubuntu image with different name
 >          9. sudo docker network inspect net
 >          10. sudo docker exec -it contUbuntu1 bash
 >          11. ping contUbuntu2
+
+
+
+## Lab3
+
+### Problem 1
+Convert the created react app multi-stage docker image into compose format.
+
+>           IN Dockerfile:
+>                FROM node:alpine3.16 AS build
+>                WORKDIR /app
+>                COPY package*.json ./
+>                RUN npm install
+>                COPY . .
+>                RUN npm run build
+>                # Deploment "nginx"
+>                FROM  nginx:alpine
+>                COPY --from=build /app/build /usr/share/nginx/html
+>                EXPOSE 80
+>                CMD [ "nginx", "-g", "daemon off;" ]
+
+>           IN docker-compose.yaml:
+>             version: '3.5'
+>             services:
+>               react-app:
+>                 image: my-app2:1.0
+>                 container_name: compose-react
+>                 restart: always
+>                 ports:
+>                    - "3000:80"
+
+>           IN Terminal:
+>                sudo apt install docker-compose
+>                sudo docker-compose up -d
+>                sudo docker-compose ps   
+
 
